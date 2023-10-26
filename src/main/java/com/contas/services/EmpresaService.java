@@ -5,11 +5,17 @@ import com.contas.repositories.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmpresaService {
 
     @Autowired
     EmpresaRepository repository;
+
+    public List<Empresa> getAll() {
+        return repository.findAll();
+    }
 
     /**
      * Encontra uma empresa no banco de dados via id

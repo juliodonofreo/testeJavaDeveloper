@@ -24,13 +24,11 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody Cliente cliente) {
+    public void save(@RequestBody Cliente cliente) {
         String cpf = cliente.getCpf();
         if(!ClienteService.validaCPF(cpf)){
             throw new InputMismatchException("Cpf inválido digitado");
         }
         service.save(cliente);
-        return new ResponseEntity<>(
-                "Cliente adicionado com sucesso", null, HttpStatus.OK);
     }
 }

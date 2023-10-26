@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/empresas")
 public class EmpresaController {
@@ -14,15 +16,18 @@ public class EmpresaController {
     @Autowired
     EmpresaService service;
 
+    @GetMapping
+    public List<Empresa> getAll() {
+        return service.getAll();
+    }
+
     @GetMapping("/{id}")
     public Empresa getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody Empresa empresa) {
+    public void save(@RequestBody Empresa empresa) {
         service.save(empresa);
-        return new ResponseEntity<>(
-                "Empresa adicionada com sucesso", null, HttpStatus.OK);
     }
 }

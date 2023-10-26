@@ -1,18 +1,26 @@
 package com.contas.services;
 
 import com.contas.entities.Cliente;
-import com.contas.entities.Empresa;
 import com.contas.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.InputMismatchException;
+import java.util.List;
 
 @Service
 public class ClienteService {
 
     @Autowired
     private ClienteRepository repository;
+
+
+    /**
+     * Retorna todos os clientes armazenados na base de dados, o resultado vem como uma
+     * lista de cliente
+     */
+    public List<Cliente> getAll() {
+        return repository.findAll();
+    }
 
     /**
      * Encontra um cliente no banco de dados via id

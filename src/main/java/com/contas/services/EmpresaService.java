@@ -13,6 +13,10 @@ public class EmpresaService {
     @Autowired
     EmpresaRepository repository;
 
+    /**
+     * Retorna todos as empresas armazenadas na base de dados, o resultado vem como uma
+     * lista de empresas
+     */
     public List<Empresa> getAll() {
         return repository.findAll();
     }

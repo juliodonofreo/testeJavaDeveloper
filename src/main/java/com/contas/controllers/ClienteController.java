@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.InputMismatchException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/clientes")
@@ -17,6 +18,11 @@ public class ClienteController {
 
     @Autowired
     ClienteService service;
+
+    @GetMapping
+    public List<Cliente> getAll() {
+        return service.getAll();
+    }
 
     @GetMapping("/{id}")
     public Cliente getById(@PathVariable Long id) {

@@ -50,7 +50,7 @@ public class Empresa {
     }
 
     public String getCnpj() {
-        return cnpj;
+        return cnpj.replaceAll("[.-/-]", "");
     }
 
     public void setCnpj(String cnpj) {

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.InputMismatchException;
 import java.util.List;
 
 @RestController
@@ -28,6 +29,11 @@ public class EmpresaController {
 
     @PostMapping
     public void save(@RequestBody Empresa empresa) {
+        String cnpj = empresa.getCnpj();
+
+        if(!EmpresaService.validaCNPJ(cnpj)) {
+            throw new InputMismatchException("CNPJ inválido enviado");
+        }
         service.save(empresa);
     }
 }

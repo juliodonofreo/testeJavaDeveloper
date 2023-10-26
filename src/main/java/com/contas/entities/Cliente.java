@@ -62,6 +62,14 @@ public class Cliente {
         this.saldo = saldo;
     }
 
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

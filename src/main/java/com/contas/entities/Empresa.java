@@ -1,8 +1,10 @@
 package com.contas.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,7 +20,7 @@ public class Empresa {
     private BigDecimal saldo;
 
     @OneToMany(mappedBy = "empresa")
-    private Cliente[] clientes;
+    private List<Cliente> clientes;
 
     public Empresa() {
     }

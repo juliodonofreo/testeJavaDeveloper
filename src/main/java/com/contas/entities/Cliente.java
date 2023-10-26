@@ -47,7 +47,7 @@ public class Cliente {
     }
 
     public String getCpf() {
-        return cpf;
+        return cpf.replaceAll("[.-]", "");
     }
 
     public void setCpf(String cpf) {

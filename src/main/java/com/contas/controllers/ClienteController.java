@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.InputMismatchException;
+
 @RestController
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -23,6 +25,10 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<String> save(@RequestBody Cliente cliente) {
+        String cpf = cliente.getCpf();
+        if(!ClienteService.validaCPF(cpf)){
+            throw new InputMismatchException("Cpf inválido digitado");
+        }
         service.save(cliente);
         return new ResponseEntity<>(
                 "Cliente adicionado com sucesso", null, HttpStatus.OK);

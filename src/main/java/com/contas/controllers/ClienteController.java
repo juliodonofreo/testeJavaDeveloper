@@ -33,7 +33,7 @@ public class ClienteController {
     public void save(@RequestBody Cliente cliente) {
         String cpf = cliente.getCpf();
         if(!ClienteService.validaCPF(cpf)){
-            throw new InputMismatchException("Cpf inválido enviado");
+            throw new InputMismatchException("Cpf inválido digitado");
         }
         service.save(cliente);
     }
